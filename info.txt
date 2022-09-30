@@ -1,6 +1,6 @@
 creamos una carpeta
 entramos 
-creamos un entorno virtual con "py -m venv <nombre entorno virtual>"
+creamos un entorno virtual con "python -m venv <nombre entorno virtual>"
 activar el entorno virtual con ". <nombre entorno virtual>/Scripts/activate"
 ( En caso de usar linux o mac reemplazar el 'Scripts' por 'bin )
 
