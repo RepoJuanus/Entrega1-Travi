@@ -1,5 +1,4 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 if [ $VIRTUAL_ENVIRONMENT ]
 then 
     deactivate

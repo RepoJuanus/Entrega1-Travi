@@ -23,9 +23,8 @@ urlpatterns = [
     path('fecha/', views.fecha),
     path('fecha-nacimiento/<int:edad>', views.calcular_nacimiento),
     path('fecha-nacimiento/', views.calcular_nacimiento),
-    path('mi-template/<str: nombre>', views.mi_template_nombre),
+    path('mi-template/<str:nombre>', views.mi_template_nombre),
     path('mi-template/', views.mi_template),
-    
-    
+    path('prueba_template', views.prueba_template),
 ]
 
