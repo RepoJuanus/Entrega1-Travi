@@ -25,3 +25,14 @@ def mi_template(request):
     template_renderizado = template.render(contexto)
     
     return HttpResponse(template_renderizado)
+
+def mi_template_nombre(request, nombre):
+    cargar_archivo = open(r'/Users/Ing.Travi/Documents/CodigoCODERHOUSE/Phyton/clases/Django/templates/template.html','r')
+    template = Template(cargar_archivo.read())
+    cargar_archivo.close()
+    
+    contexto = Context({"persona": nombre})
+    
+    template_renderizado = template.render(contexto)
+    
+    return HttpResponse(template_renderizado)
