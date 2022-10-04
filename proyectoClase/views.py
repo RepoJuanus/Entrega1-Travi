@@ -1,7 +1,7 @@
 from multiprocessing import context
 from re import template
 from django.http import HttpResponse
-from datetime import datetime
+from datetime import datetime, timedelta
 from django.template import Context, Template, loader
 import random
 
@@ -43,21 +43,40 @@ def prueba_template(request):
     
     return HttpResponse(template_renderizado)
 
-def crear_familiar(request, nombre, apellido):
+# def crear_familiar(request, nombre, apellido):
     
-    familiar = Familiar(nombre=nombre, apellido=apellido, edad= random.randrange(1,99), fecha_nacimiento=datetime.now())
-    familiar.save()     #guarda el objeto creado para que no desaparezca con el return
+#     familiar = Familiar(nombre=nombre, apellido=apellido, edad= random.randrange(1,99), fecha_nacimiento=datetime.now())
+#     familiar.save()     #guarda el objeto creado para que no desaparezca con el return
     
-    mi_contexto = {"persona" : familiar}
-    template = loader.get_template("crear_familiar.html")
+#     mi_contexto = {"persona" : familiar}
+#     template = loader.get_template("crear_familiar.html")
+#     template_renderizado = template.render(mi_contexto)     
+        
+#     return HttpResponse(template_renderizado)
+
+def crear_familiares(request):
+    
+    familiar1 = Familiar(nombre = 'Juan', apellido = 'Gomez', edad = 50, fecha_nacimiento = datetime.now()-timedelta(50*365))
+    familiar2 = Familiar(nombre = 'Carlos', apellido = 'Gomez', edad = 18, fecha_nacimiento = datetime.now()-timedelta(18*365))
+    familiar3 = Familiar(nombre = 'Norma', apellido = 'Lopez', edad = 53, fecha_nacimiento = datetime.now()-timedelta(53*365))
+    familiar1.save()     #guarda el objeto creado para que no desaparezca con el return
+    familiar2.save()
+    familiar3.save()
+      
+    mi_contexto = {"persona1" : familiar1,
+                   "persona2" : familiar2,
+                   "persona3" : familiar3}
+    
+    template = loader.get_template("crear_familiares.html")
     template_renderizado = template.render(mi_contexto)     
         
     return HttpResponse(template_renderizado)
 
+
 def ver_familiares(request):
     
-    familiar = Familiar.objects.all()
-    mi_contexto = {"familiar" : familiar}
+    familiares = Familiar.objects.all()
+    mi_contexto = {"familiares" : familiares}
     template = loader.get_template("ver_familiares.html")
     template_renderizado = template.render(mi_contexto) 
         
