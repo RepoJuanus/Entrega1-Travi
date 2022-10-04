@@ -1,0 +1,1 @@
+Cree mi proyecto en la rama main. Una vez funcionando cree una segunda rama beta_de_MVT para probar modificaciones.
