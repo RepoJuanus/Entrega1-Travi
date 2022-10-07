@@ -29,14 +29,14 @@ def mi_template(request):
 
 def mi_template_nombre(request, nombre):
        
-    return render(request, 'template2.html', {"persona" : nombre} )
+    return render(request, 'home/template2.html', {"persona" : nombre} )
 
 def prueba_template(request):
     
     mi_contexto = {"rango" : list(range (1,11)),
                    "valor_random" : random.randrange(1,11)}
          
-    return render(request, 'prueba_template.html', mi_contexto )
+    return render(request, 'home/prueba_template.html', mi_contexto )
 
 def crear_familiares(request):
     
@@ -51,7 +51,7 @@ def crear_familiares(request):
                    "persona2" : familiar2,
                    "persona3" : familiar3}
     
-    return render(request, 'crear_familiares.html', mi_contexto )
+    return render(request, 'home/crear_familiares.html', mi_contexto )
 
 
 def ver_familiares(request):
@@ -59,4 +59,7 @@ def ver_familiares(request):
     familiares = Familiar.objects.all()
     mi_contexto = {"familiares" : familiares}
     
-    return render(request, 'ver_familiares.html', mi_contexto )
+    return render(request, 'home/ver_familiares.html', mi_contexto )
+
+def index(request):
+    return render(request, 'home/index.html')

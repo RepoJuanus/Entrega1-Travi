@@ -55,7 +55,8 @@ ROOT_URLCONF = 'proyectoClase.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [ BASE_DIR / 'templates'],
+        # 'DIRS': [ BASE_DIR / 'templates'], #como voy a llevarme los templates a cada app, le saco el BASE DIR de aca
+        'DIRS': [ ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
