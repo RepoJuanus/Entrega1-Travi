@@ -1,15 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Listado de tus familiares:</p>
-    {% for familiar in familiares %}
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Familiares cargados ...</title>
+{% endblock titulo_pagina %}  
+
+{% block mi_contenido %}
+<a class="navbar-brand" href={% url 'index' %}>Index</a>
+<p>Listado de tus familiares:</p>
+{% for familiar in familiares %}
     <li> {{familiar.id}} Nombre: {{familiar.apellido}}, {{familiar.nombre}}. Edad: {{familiar.edad}} FN:{{familiar.fecha_nacimiento}} </li>
-    {% endfor %}
-</body>
-</html>
+{% endfor %}
+{% endblock mi_contenido %}

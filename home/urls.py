@@ -7,15 +7,15 @@ from home import views
 # from . import views
 
 urlpatterns = [
-    path('', views.index),
-    path('hola/', views.hola),
-    path('fecha/', views.fecha),
+    path('', views.index, name = 'index'),
+    path('hola/', views.hola, name = 'hola'),
+    path('fecha/', views.fecha, name = 'fecha'),
     path('fecha-nacimiento/<int:edad>', views.calcular_nacimiento),
     path('fecha-nacimiento/', views.calcular_nacimiento),
     path('mi-template/<str:nombre>', views.mi_template_nombre),
-    path('mi-template/', views.mi_template),
+    # path('mi-template/', views.mi_template, name = 'mi_template'),
     path('prueba_template', views.prueba_template),
-    path('ver-familiares/', views.ver_familiares),
+    path('ver-familiares/', views.ver_familiares, name = 'ver_familia'),
     # path('crear-familiar/<str:nombre>/<str:apellido>/', views.crear_familiar),
     path('crear-familiares/', views.crear_familiares),
 ]
