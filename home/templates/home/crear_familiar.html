@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <p>Se agrego el familiar.</p>
-</body>
-</html>
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Crear familiar.</title>
+{% endblock titulo_pagina %}        
+
+{% block mi_contenido %}
+    <!--aca va el contenido de los hijos-->
+    <form action={% url 'crear_familiar' %} method="POST">
+        {% csrf_token %}
+        <p>
+            Nombre:
+            <input type="text" name='nombre' placeholder="Nombre">
+        </p>
+        <p>
+            <label for="apellido">Apellido:</label>
+            <input type="text" name="Apellido" placeholder="Apellido">
+        </p>
+        {% comment %} <input type="submit" value="Crear"> {% endcomment %}
+        <button type="submit">Guardar</button>
+
+    </form>
+{% endblock mi_contenido %}

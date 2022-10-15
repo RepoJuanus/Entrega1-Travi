@@ -53,6 +53,17 @@ def crear_familiares(request):
     
     return render(request, 'home/crear_familiares.html', mi_contexto )
 
+def crear_familiar(request):
+    
+    # print('metodo')
+    # print(request.method)
+    print('POST')
+    print(request.POST)
+    # print('GET')
+    # print(request.GET)
+    
+    return render(request, 'home/crear_familiar.html', {} )
+
 
 def ver_familiares(request):
     

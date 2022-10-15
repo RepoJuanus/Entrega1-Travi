@@ -16,6 +16,6 @@ urlpatterns = [
     # path('mi-template/', views.mi_template, name = 'mi_template'),
     path('prueba_template', views.prueba_template),
     path('ver-familiares/', views.ver_familiares, name = 'ver_familia'),
-    # path('crear-familiar/<str:nombre>/<str:apellido>/', views.crear_familiar),
-    path('crear-familiares/', views.crear_familiares),
+    path('crear-familiar/', views.crear_familiar, name = 'crear_familiar'),
+    # path('crear-familiares/', views.crear_familiares),
 ]
