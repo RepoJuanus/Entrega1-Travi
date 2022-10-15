@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from datetime import datetime, timedelta
 from django.template import Context, Template, loader
 import random
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from home.models import Familiar
 
@@ -55,12 +55,17 @@ def crear_familiares(request):
 
 def crear_familiar(request):
     
-    # print('metodo')
-    # print(request.method)
-    print('POST')
-    print(request.POST)
-    # print('GET')
-    # print(request.GET)
+    if request.method == 'POST':    # la primera vez que se accede a una vista, se hace por POST
+        # print(request.method)
+        # print('POST')
+        # print(request.POST)
+        nombre = request.POST.get('nombre')
+        # apellido = request.POST.get('apellido')
+        apellido = request.POST['apellido']
+        
+        persona = Familiar(nombre = nombre, apellido = apellido, edad=random.randrange(1,99), fecha_nacimiento=datetime.now())
+        persona.save()
+        return redirect('ver_familia') # va a la URL
     
     return render(request, 'home/crear_familiar.html', {} )
 
