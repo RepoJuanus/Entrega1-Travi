@@ -5,6 +5,7 @@ from datetime import datetime, timedelta
 from django.template import Context, Template, loader
 import random
 from django.shortcuts import render, redirect
+from home.forms import HumanoFormulario, BusquedaHumano
 
 from home.models import Familiar
 
@@ -59,21 +60,45 @@ def crear_familiar(request):
         # print(request.method)
         # print('POST')
         # print(request.POST)
-        nombre = request.POST.get('nombre')
-        # apellido = request.POST.get('apellido')
-        apellido = request.POST['apellido']
+        # nombre = request.POST.get('nombre')
+        # # apellido = request.POST.get('apellido')
+        # apellido = request.POST['apellido']
         
-        persona = Familiar(nombre = nombre, apellido = apellido, edad=random.randrange(1,99), fecha_nacimiento=datetime.now())
-        persona.save()
-        return redirect('ver_familia') # va a la URL
+        # persona = Familiar(nombre = nombre, apellido = apellido, edad=random.randrange(1,99), fecha_nacimiento=datetime.now())
+        # persona.save()
+        # return redirect('ver_familia') # va a la URL
+        
+        formulario = HumanoFormulario(request.POST)
+        
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            
+            nombre = data['nombre']
+            apellido = data['apellido']
+            edad = data['edad']
+            fecha_nacimiento=data.get('fecha_nacimiento', datetime.now())
+            persona = Familiar(nombre = nombre, apellido = apellido, edad=edad, fecha_nacimiento=fecha_nacimiento)
+            persona.save()
+            return redirect('ver_familia') # va a la URL
+        
+    formulario = HumanoFormulario()
+    return render(request, 'home/crear_familiar.html', {'formulario': formulario} )
     
-    return render(request, 'home/crear_familiar.html', {} )
+    # return render(request, 'home/crear_familiar.html', {} )
 
 
 def ver_familiares(request):
     
-    familiares = Familiar.objects.all()
-    mi_contexto = {"familiares" : familiares}
+    nombre = request.GET.get('nombre', None)
+    
+    if nombre: 
+        familiares = Familiar.objects.filter(nombre__icontains = nombre) #busca lo que contenga nombre
+    else:
+        familiares = Familiar.objects.all()
+    
+    formulario = BusquedaHumano()
+    
+    mi_contexto = {"familiares" : familiares, 'formulario': formulario}
     
     return render(request, 'home/ver_familiares.html', mi_contexto )
 

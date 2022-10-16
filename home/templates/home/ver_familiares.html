@@ -5,7 +5,16 @@
 {% endblock titulo_pagina %}  
 
 {% block mi_contenido %}
-<a class="navbar-brand" href={% url 'index' %}>Index</a>
+<a class="navbar-brand" href={% url 'crear_familiar' %}>Crear Persona</a>
+<p>
+    <!--aca va el contenido de los hijos-->
+    <form action={% url 'ver_familia' %} method="GET">
+        {{formulario}}
+        <button type="submit">Buscar</button> 
+    </form>
+
+</p>
+
 <p>Listado de tus familiares:</p>
 {% for familiar in familiares %}
     <li> {{familiar.id}} Nombre: {{familiar.apellido}}, {{familiar.nombre}}. Edad: {{familiar.edad}} FN:{{familiar.fecha_nacimiento}} </li>

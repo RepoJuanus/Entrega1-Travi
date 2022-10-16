@@ -8,16 +8,20 @@
     <!--aca va el contenido de los hijos-->
     <form action={% url 'crear_familiar' %} method="POST">
         {% csrf_token %}
-        <p>
+        {% comment %} <p>
             Nombre:
             <input type="text" name='nombre' placeholder="Nombre">
         </p>
         <p>
             <label for="apellido">Apellido:</label>
             <input type="text" name="apellido" placeholder="Apellido">
-        </p>
+        </p>{% endcomment %}
         {% comment %} <input type="submit" value="Crear"> {% endcomment %}
-        <button type="submit">Guardar</button>
-
+        <table>
+            {{formulario}}
+        </table>
+        
+        
+        <button type="submit">Guardar</button> 
     </form>
 {% endblock mi_contenido %}
