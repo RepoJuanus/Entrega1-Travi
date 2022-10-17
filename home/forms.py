@@ -1,10 +1,11 @@
 from django import forms
 
-class HumanoFormulario(forms.Form):
+class CrearContacto(forms.Form):
     nombre = forms.CharField(max_length=30)
     apellido = forms.CharField(max_length=30)
-    edad = forms.IntegerField()
-    fecha_nacimiento = forms.DateField(required=False)  # no es requerido obligatorio
+    telefono = forms.CharField(max_length=30)
+    email = forms.EmailField(min_length=5, max_length=60, required=False) #, help_text='example@example.com')  # no es requerido obligatorio
     
-class BusquedaHumano(forms.Form):
+class BuscarContacto(forms.Form):
     nombre = forms.CharField(max_length=30, required=False)
+    apellido = forms.CharField(max_length=30, required=False)

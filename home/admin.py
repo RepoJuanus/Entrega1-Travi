@@ -1,6 +1,5 @@
 from django.contrib import admin
-from home.models import Familiar
-
+from home.models import Contacto
 # Register your models here.
 
-admin.site.register(Familiar)
+admin.site.register(Contacto)

@@ -1,0 +1,23 @@
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Contactos cargados ...</title>
+{% endblock titulo_pagina %}  
+
+{% block mi_contenido %}
+<a class="navbar-brand" href={% url 'crear_contacto' %}>Agregar contacto</a>
+<p>
+    <form action={% url 'ver_lista' %} method="GET">
+        {{formulario}}
+        <button type="submit">Buscar</button> 
+    </form>
+</p>
+<p>Agenda Telefonica:</p>
+{% if  contactos %}
+    {% for contacto in contactos %}
+        <li> {{contacto.id}} Nombre: {{contacto.apellido}}, {{contacto.nombre}}. Telefono: {{contacto.telefono}} email:{{contacto.email}} </li>
+    {% endfor %}
+{% else %}
+    <p>Agenda vacia o busqueda sin resultados.</p>
+{% endif %}
+{% endblock mi_contenido %}

@@ -1,1 +1,6 @@
-Cree mi proyecto en la rama main. Una vez funcionando cree una segunda rama beta_de_MVT para probar modificaciones.
+Entrega Intermedia
+Travi Juan Pablo
+AGENDA TELEFONICA
+-----------------
+En el menu de "ver listado" tenemos la llista de los contactos. Con la opcion de busqueda por nombre y/o apellido.
+En "nosotros" tenemos el concepto de esta entrega
