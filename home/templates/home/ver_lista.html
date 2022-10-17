@@ -15,7 +15,7 @@
 <p>Agenda Telefonica:</p>
 {% if  contactos %}
     {% for contacto in contactos %}
-        <li> {{contacto.id}} Nombre: {{contacto.apellido}}, {{contacto.nombre}}. Telefono: {{contacto.telefono}} email:{{contacto.email}} </li>
+        <li> {{contacto.id}} Nombre: {{contacto.apellido}}, {{contacto.nombre}}. Telefono: {{contacto.telefono}} </li>
     {% endfor %}
 {% else %}
     <p>Agenda vacia o busqueda sin resultados.</p>

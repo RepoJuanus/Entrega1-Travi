@@ -1,12 +1,9 @@
-# from multiprocessing import context
-from re import template
-# from django.http import HttpResponse
-# from datetime import datetime, timedelta
-# from django.template import Context, Template, loader
-from django.shortcuts import render, redirect
-from home.forms import CrearContacto, BuscarContacto # ,HumanoFormulario, BusquedaHumano
 
-from home.models import Contacto #, Familiar
+from re import template
+from django.shortcuts import render, redirect
+from home.forms import CrearContacto, BuscarContacto
+
+from home.models import Contacto
 
 def crear_contacto(request):
     if request.method == 'POST':    # la primera vez que se accede a una vista, se hace por POST
@@ -16,8 +13,7 @@ def crear_contacto(request):
             nombre = data['nombre']
             apellido = data['apellido']
             telefono = data['telefono']
-            email = data['email']
-            contacto = Contacto(nombre = nombre, apellido = apellido, telefono=telefono, email=email)
+            contacto = Contacto(nombre = nombre, apellido = apellido, telefono=telefono)
             contacto.save()
             return redirect('ver_lista') # va a la URL
     formulario = CrearContacto()
