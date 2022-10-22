@@ -1,0 +1,17 @@
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Agregar mascota.</title>
+{% endblock titulo_pagina %}        
+
+{% block mi_contenido %}
+    <!--aca va el contenido de los hijos-->
+    <form action={% url 'crear_mascota' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{form}}
+        </table>
+        
+        <button type="submit">Guardar</button> 
+    </form>
+{% endblock mi_contenido %}

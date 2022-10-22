@@ -13,6 +13,7 @@ def crear_contacto(request):
             nombre = data['nombre']
             apellido = data['apellido']
             telefono = data['telefono']
+            
             contacto = Contacto(nombre = nombre, apellido = apellido, telefono=telefono)
             contacto.save()
             return redirect('ver_lista') # va a la URL
