@@ -1,0 +1,19 @@
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Iniciar sesion</title>
+{% endblock titulo_pagina %}        
+
+{% block mi_contenido %}
+    <!--aca va el contenido de los hijos-->
+    <form action={% url 'login' %} method="POST">
+        {% csrf_token %}
+        <table>
+            {{formulario}}
+        </table>
+        <p>
+            <button type="submit">Iniciar Sesion</button> 
+
+        </p>        
+    </form>
+{% endblock mi_contenido %}
