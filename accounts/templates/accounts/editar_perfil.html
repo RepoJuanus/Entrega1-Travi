@@ -1,0 +1,19 @@
+{% extends 'padres/base.html' %}
+
+{% block titulo_pagina %}
+    <title>Editar perfil</title>
+{% endblock titulo_pagina %}        
+
+{% block mi_contenido %}
+    <!--aca va el contenido de los hijos-->
+    <form action={% url 'editar_perfil' %} method="POST" enctype='multipar/form-data'>
+        {% csrf_token %}
+        <table>
+            {{formulario}}
+        </table>
+        <p>
+            <button type="submit">Editar</button> 
+
+        </p>        
+    </form>
+{% endblock mi_contenido %}

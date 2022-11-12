@@ -12,3 +12,9 @@ class MiFormularioCreacion(UserCreationForm):
         model = User
         fields = ['username', 'email', 'password1', 'password2']
         help_texts = {key: '' for key in fields}  #list comprension es para crear un diccionario dinamicamente
+
+class EditarPerfilFormulario(forms.Form):
+    first_name = forms.CharField(label="Nombre")
+    last_name = forms.CharField(label="Apellido")
+    email = forms.CharField()
+    avatar = forms.ImageField(required=False)

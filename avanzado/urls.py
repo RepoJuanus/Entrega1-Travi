@@ -3,7 +3,7 @@ from avanzado import views
 
 
 urlpatterns = [
-    # version ccon vistas
+    # version con vistas
     # path('mascotas/', views.ver_mascotas, name = 'ver_mascotas'),
     path("mascotas/crear/", views.crear_mascota, name="crear_mascota"),
     # path("mascotas/editar/<int:id>", views.editar_mascota, name="editar_mascota"),
