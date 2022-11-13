@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login
 from accounts.forms import MiFormularioCreacion, EditarPerfilFormulario
 from django.contrib.auth.decorators import login_required
@@ -9,15 +9,13 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from accounts.models import ExtensionUsuario
 
 
-# Create your views here.
-
 def mi_login(request):
     if request.method == 'POST':
         formulario = AuthenticationForm(request, data=request.POST)
         if formulario.is_valid():
             usuario = formulario.get_user()
             login(request, usuario)
-            extensionusuario, es_nuevo = ExtensionUsuario.objects.get_or_create(user = request.user) #es_nuevo va a ser 1 o 0 si se creo o se obtubo
+            extensionusuario, es_nuevo = ExtensionUsuario.objects.get_or_create(user=request.user)
             return redirect('index')
             
     else:
@@ -41,8 +39,9 @@ def perfil(request):
 
 @login_required
 def editar_perfil(request):
+    
     user = request.user
-    # user.extensionusuario #se hace asi porque es un one to one
+    
     if request.method == "POST":
         
         formulario = EditarPerfilFormulario(request.POST, request.FILES)

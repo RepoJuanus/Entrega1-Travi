@@ -8,10 +8,10 @@
     <h1>Informacion del usuario</h1>
     <p>
         <li>
-            {% if  request.user.extensionusuario.avatar.url %}
-                <img src={{request.user.extensionusuario.avatar.url}} alt="">
+            {% if  request.user.extensionusuario.avatar %}
+            <img src={{request.user.extensionusuario.avatar.url}} alt="">
             {% else %}
-                Sin avatar.
+            Sin avatar.
             {% endif %}
         </li>
     </p>
